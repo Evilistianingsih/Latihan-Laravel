@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\PostControler;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,56 +31,5 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/blog', function () {
-    $blog_posts = [
-        [
-            "title" => "Judul Post Pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Evi Listianingsih",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi optio voluptatibus aliquam adipisci et expedita necessitatibus possimus ad reprehenderit illum fuga, rerum est ullam voluptatem nemo at, saepe inventore. Aperiam."
-        ],
-        [
-            "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Septi Fitria Munawaroh",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi optio voluptatibus aliquam adipisci et expedita necessitatibus possimus ad reprehenderit illum fuga, rerum est ullam voluptatem nemo at, saepe inventore. Aperiam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quidem labore sint, ullam officiis omnis ut quas harum? Excepturi quidem aperiam numquam. Expedita ducimus, veritatis sit quisquam nulla sed placeat!"
-        ],
-    
-    ];
-
-    return view('posts', [
-        "title" => "Posts",
-        "posts" => $blog_posts
-    ]);
-});
-
-Route::get('posts/{slug}', function($slug) {
-    $blog_posts = [
-        [
-            "title" => "Judul Post Pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Evi Listianingsih",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi optio voluptatibus aliquam adipisci et expedita necessitatibus possimus ad reprehenderit illum fuga, rerum est ullam voluptatem nemo at, saepe inventore. Aperiam."
-        ],
-        [
-            "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Septi Fitria Munawaroh",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi optio voluptatibus aliquam adipisci et expedita necessitatibus possimus ad reprehenderit illum fuga, rerum est ullam voluptatem nemo at, saepe inventore. Aperiam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quidem labore sint, ullam officiis omnis ut quas harum? Excepturi quidem aperiam numquam. Expedita ducimus, veritatis sit quisquam nulla sed placeat!"
-        ],
-    
-    ];
-
-    $new_post = [];
-    foreach ($blog_posts as $post){
-        if($post["slug"] === $slug){
-            $new_post = $post;
-        }
-    }
-
-
-    return view('post',[
-        "title" => "Single Post",
-        "post" => $new_post
-    ]);
-});
+Route::get('/blog', [PostController::class, 'index']);
+Route::get('/posts/{slug}', [PostController::class, 'show']);
