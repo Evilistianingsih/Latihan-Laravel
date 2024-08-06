@@ -2,34 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-
-class Post
+class Post extends Model
 {
-    private static $blog_posts = [
-        [
-            "title" => "Judul Post Pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Evi Listianingsih",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi optio voluptatibus aliquam adipisci et expedita necessitatibus possimus ad reprehenderit illum fuga, rerum est ullam voluptatem nemo at, saepe inventore. Aperiam."
-        ],
-        [
-            "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Septi Fitria Munawaroh",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi optio voluptatibus aliquam adipisci et expedita necessitatibus possimus ad reprehenderit illum fuga, rerum est ullam voluptatem nemo at, saepe inventore. Aperiam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quidem labore sint, ullam officiis omnis ut quas harum? Excepturi quidem aperiam numquam. Expedita ducimus, veritatis sit quisquam nulla sed placeat!"
-        ],
-    ];
+    use HasFactory;
 
-
-    public static function all()
-    {
-        return collect(self::$blog_posts);
-    }
-
-public static function find($slug)
-    {
-        $posts = static::all();
-        return $posts->firstWhere('slug', $slug);
-    }
+    //protected $fillable = ['title', 'excerpt', 'body']; //yang boleh diisi title, excerpt, dan body sisanya gak boleh.
+    protected $guarded = ['id'];//yang tidak boleh di isi hanya id sisanya boleh.
 }
