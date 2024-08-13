@@ -23,8 +23,18 @@
 
     @if ($posts->count())
         <div class="card mb-3">
-            <img src="https://images.unsplash.com/photo-1719937206158-cad5e6775044?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="card-img-top" style="width: 100%; height: 500px;" alt="{{ $posts[0]->category->name }}">
+            @if ($posts[0]->image)
+                <div style="max-height: 350px; overflow:hidden">
+
+                    <img src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}"
+                        class="img-fluid">
+                </div>
+            @else
+                <div style="max-height: 350px; overflow:hidden">
+
+                    <img src="https://www.webworxtechnology.com/wp-content/uploads/2018/06/web-development.jpg"class="card-img-top" alt="{{ $posts[0]->category->name }}">
+                </div>
+            @endif
 
             <div class="card-body text-center">
                 <h3 class="card-title"><a href="/posts/{{ $posts[0]->slug }}"
@@ -56,8 +66,19 @@
                             <div class="position-absolute px-3 py-2 " style="background-color: rgba(0,0,0,0.5)"><a
                                     href="/posts?category={{ $post->category->slug }}"
                                     class="text-white text-decoration-none">{{ $post->category->name }}</a></div>
-                            <img src="https://images.unsplash.com/photo-1719937206158-cad5e6775044?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                class="card-img-top" alt="{{ $post->category->name }}">
+                                    @if ($posts[0]->image)
+                                    <div style="max-height: 350px; overflow:hidden">
+                    
+                                        <img src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}"
+                                            class="img-fluid">
+                                    </div>
+                                @else
+                                    <div style="max-height: 350px; overflow:hidden">
+                    
+                                        <img src="https://www.webworxtechnology.com/wp-content/uploads/2018/06/web-development.jpg" alt="{{ $post->category->name }}">
+                                    </div>
+                                @endif
+
                             <div class="card-body">
                                 <h5 class="card-title">{{ $post->title }}</h5>
                                 <p>
