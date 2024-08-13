@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     //protected $fillable = ['title', 'excerpt', 'body']; //yang boleh diisi title, excerpt, dan body sisanya gak boleh.
     protected $guarded = ['id']; //yang tidak boleh di isi hanya id sisanya boleh.
@@ -47,4 +48,14 @@ class Post extends Model
     {
         return 'slug';
     }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
 }
