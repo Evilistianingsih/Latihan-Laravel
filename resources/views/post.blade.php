@@ -10,19 +10,19 @@
                         href="/posts?category={{ $post->category->slug }}"
                         class="text-decoration-none">{{ $post->category->name }}</a></p>
 
-                        @if ($post->image)
-                        <div style="max-height: 350px; overflow:hidden">
-    
-                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
-                                class="img-fluid">
-                        </div>
-                    @else
-                        <div style="max-height: 350px; overflow:hidden">
-    
-                            <img src="https://www.webworxtechnology.com/wp-content/uploads/2018/06/web-development.jpg"
-                                alt="{{ $post->category->name }}" class="img-fluid ">
-                        </div>
-                    @endif
+                @if ($post->image)
+                    <div style="max-height: 350px; overflow:hidden">
+
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                            class="img-fluid">
+                    </div>
+                @else
+                    <div style="max-height: 350px; overflow:hidden">
+
+                        <img src="https://www.webworxtechnology.com/wp-content/uploads/2018/06/web-development.jpg"
+                            alt="{{ $post->category->name }}" class="img-fluid ">
+                    </div>
+                @endif
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
                 </article>
