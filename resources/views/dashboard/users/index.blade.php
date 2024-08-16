@@ -38,7 +38,7 @@
                                 @method('delete')
                                 @csrf
                                 <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span
-                                        data-feather="delete"></span></button>
+                                        data-feather="trash"></span></button>
                             </form>
                         </td>
                     </tr>
