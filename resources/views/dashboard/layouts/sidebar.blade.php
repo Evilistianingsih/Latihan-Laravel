@@ -30,6 +30,12 @@
                     Post Categories
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }}" aria-current="page" href="/dashboard/users">
+                    <span data-feather="user"></span>
+                    Users
+                </a>
+            </li>
 
         </ul>
         @endcan

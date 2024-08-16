@@ -110,7 +110,7 @@ class AdminCategoryController extends Controller
     {
         Category::destroy($category->id);
 
-        return redirect('/dashboard/categories')->with('success', 'New category has been added!');
+        return redirect('/dashboard/categories')->with('success', 'Category has been deleted!');
     }
 
     public function checkSlug(Request $request)
