@@ -14,16 +14,16 @@
                     @method('delete')
                     @csrf
                     <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><span
-                            data-feather="delete"></span> Delete</button>
+                            data-feather="trash"></span> Delete</button>
                 </form>
                 @if ($post->image)
-                    <div style="max-height: 350px; overflow:hidden">
+                    <div class="my-3" style="max-height: 350px; overflow:hidden">
 
                         <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
                             class="img-fluid">
                     </div>
                 @else
-                    <div style="max-height: 350px; overflow:hidden">
+                    <div class="my-3" style="max-height: 350px; overflow:hidden">
 
                         <img src="https://www.webworxtechnology.com/wp-content/uploads/2018/06/web-development.jpg"
                             alt="{{ $post->category->name }}" class="img-fluid ">

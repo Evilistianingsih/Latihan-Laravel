@@ -40,6 +40,15 @@
             </div>
 
             <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="is_admin" id="is_admin" value="1" {{ old('is_admin', $user->is_admin ?? 0) ? 'checked' : '' }}>
+                    <label class="form-check-label" for="is_admin">
+                        Admin
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-3">
                 <label for="password" class="mb-1">Password</label>
                 <input type="password" name="password"
                     class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password" required>

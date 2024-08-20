@@ -40,7 +40,7 @@
 
                 <p>
                     <small class="text-muted">
-                        By 
+                        By
                         @if ($posts[0]->author)
                             <a href="/posts?author={{ $posts[0]->author->username }}" class="text-decoration-none">
                                 {{ $posts[0]->author->username }}
@@ -48,10 +48,10 @@
                         @else
                             Unknown Author
                         @endif
-                        in 
+                        in
                         <a href="/posts?category={{ $posts[0]->category->slug }}" class="text-decoration-none">
                             {{ $posts[0]->category->name }}
-                        </a> 
+                        </a>
                         {{ $posts[0]->created_at->diffForHumans() }}
                     </small>
                 </p>
@@ -66,7 +66,7 @@
             <div class="row">
                 @foreach ($posts->skip(1) as $post)
                     <div class="col-md-4 mb-3">
-                        <div class="card">
+                        <div class="card h-100 shadow-sm border-0"">
                             <div class="position-absolute px-3 py-2 " style="background-color: rgba(0,0,0,0.5)">
                                 <a href="/posts?category={{ $post->category->slug }}" class="text-white text-decoration-none">
                                     {{ $post->category->name }}
