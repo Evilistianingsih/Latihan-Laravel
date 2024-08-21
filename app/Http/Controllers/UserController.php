@@ -42,11 +42,11 @@ class UserController extends Controller
             'username' => 'required|min:3|max:225|unique:users',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:6|max:225',
-            'is_admin' => 'boolean'
+            'is_admin' => 'required|boolean'
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['is_admin'] = $request->has('is_admin') ? 1 : 0;
+        // $validatedData['is_admin'] = $request->has('is_admin') ? 1 : 0;
 
         User::create($validatedData);
 
@@ -91,7 +91,7 @@ class UserController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'password' => 'nullable|min:6|max:225',
-            'is_admin' => 'boolean'
+            'is_admin' => 'required|boolean'
         ];
         if ($request->username != $user->username) {
             $rules['username'] = 'required|min:3|max:225|unique:users,username' . $user->id;
@@ -108,7 +108,7 @@ class UserController extends Controller
             unset($validateData['password']); // Jangan ubah password jika tidak ada input baru
         }
 
-        $validateData['is_admin'] = $request->has('is_admin') ? 1 : 0;
+        // $validateData['is_admin'] = $request->has('is_admin') ? 1 : 0;
 
         User::where('id', $user->id)->update($validateData);
 

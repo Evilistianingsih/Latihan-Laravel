@@ -41,13 +41,18 @@
             </div>
 
             <div class="mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="is_admin" id="is_admin" value="1" {{ old('is_admin', $user->is_admin ?? 0) ? 'checked' : '' }}>
-                    <label class="form-check-label" for="is_admin">
-                        Admin
-                    </label>
-                </div>
+                <label for="is_admin" class="mb-1">Admin</label>
+                <select name="is_admin" id="is_admin" class="form-select @error('is_admin') is-invalid @enderror">
+                    <option value="0" {{ old('is_admin', $users->is_admin) == 0 ? 'selected' : '' }}>No</option>
+                    <option value="1" {{ old('is_admin', $users->is_admin) == 1 ? 'selected' : '' }}>Yes</option>
+                </select>
+                @error('is_admin')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
+            
 
             <div class="mb-3">
                 <label for="password" class="mb-1">Password</label>

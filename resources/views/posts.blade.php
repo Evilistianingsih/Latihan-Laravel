@@ -46,7 +46,7 @@
                                 {{ $posts[0]->author->username }}
                             </a>
                         @else
-                            Unknown Author
+                            Penulis
                         @endif
                         in
                         <a href="/posts?category={{ $posts[0]->category->slug }}" class="text-decoration-none">
@@ -89,7 +89,7 @@
                                                 {{ $post->author->username }}
                                             </a>
                                         @else
-                                            Unknown Author
+                                            Penulis
                                         @endif
                                         in
                                         {{ $post->created_at->diffForHumans() }}

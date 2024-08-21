@@ -39,8 +39,8 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => 'required|max:255',
-            'slug' => 'required|unique:posts',
+            'name' => 'required|max:255|unique:categories',
+            'slug' => 'required|unique:categories',
         ]);
 
         Category::create($validateData);
@@ -84,11 +84,14 @@ class AdminCategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $rules = [
-            'name' => 'required|max:255',
+            // 'name' => 'required|max:255',
         ];
 
         if($request->slug != $category->slug) {
-            $rules['slug'] = 'required|unique:posts';
+            $rules['slug'] = 'required|unique:categories';
+        }
+        if($request->name != $category->name) {
+            $rules['name'] = 'required|max:255|unique:categories';
         }
 
         $validateData = $request->validate($rules);

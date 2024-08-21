@@ -9,6 +9,7 @@ class RegisterController extends Controller
 {
     public function index() //creat
     {
+        return redirect('/login')->with('error', 'Registration is currently disabled.');
         return view('register.index', [
             'title' => 'Register',
             'active' => 'register'
@@ -17,6 +18,7 @@ class RegisterController extends Controller
     
     public function store(Request $request)
     {
+        return redirect('/login')->with('error', 'Registration is currently disabled.');
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'username' => 'required|min:3|max:225|unique:users',

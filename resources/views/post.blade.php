@@ -12,7 +12,7 @@
                             {{ $post->author->name }}
                         </a>
                     @else
-                        Unknown Author
+                        Penulis
                     @endif
                     in 
                     <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">

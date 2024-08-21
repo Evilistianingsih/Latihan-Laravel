@@ -46,7 +46,7 @@ class DashboardPostController extends Controller
     {
         
         $validateData = $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|unique:posts',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
             'image' =>'image|file|max:1024',
@@ -102,7 +102,7 @@ class DashboardPostController extends Controller
     public function update(Request $request, Post $post)
     {
         $rules = [
-            'title' => 'required|max:255',
+            // 'title' => 'required|max:255',
             'category_id' => 'required',
             'image' =>'image|file|max:1024',
             'body' => 'required'
@@ -110,6 +110,9 @@ class DashboardPostController extends Controller
 
         if($request->slug != $post->slug){
             $rules['slug'] = 'required|unique:posts';
+        }
+        if($request->title != $post->title){
+            $rules['title'] = 'required|max:255|unique:posts';
         }
 
         $validateData = $request->validate($rules);
